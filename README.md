@@ -9,12 +9,12 @@
 
 [npm-image]: https://img.shields.io/npm/v/egg-connector-remote.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-connector-remote
-[travis-image]: https://img.shields.io/travis/eggjs/egg-connector-remote.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-connector-remote
-[codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-connector-remote.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/eggjs/egg-connector-remote?branch=master
-[david-image]: https://img.shields.io/david/eggjs/egg-connector-remote.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-connector-remote
+[travis-image]: https://img.shields.io/travis/TheOne1006/egg-connector-remote.svg?style=flat-square
+[travis-url]: https://travis-ci.org/TheOne1006/egg-connector-remote
+[codecov-image]: https://img.shields.io/codecov/c/github/TheOne1006/egg-connector-remote.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/TheOne1006/egg-connector-remote?branch=master
+[david-image]: https://img.shields.io/david/TheOne1006/egg-connector-remote.svg?style=flat-square
+[david-url]: https://david-dm.org/TheOne1006/egg-connector-remote
 [snyk-image]: https://snyk.io/test/npm/egg-connector-remote/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-connector-remote
 [download-image]: https://img.shields.io/npm/dm/egg-connector-remote.svg?style=flat-square
