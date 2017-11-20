@@ -29,6 +29,7 @@ Description here.
 规则来自于
 <https://editor.swagger.io//?_ga=2.41951072.471192285.1510301833-940518916.1510301833#/>
 
+
 ### 依赖的 egg 版本
 
 egg-connector-remote 版本 | egg 1.x
@@ -73,6 +74,9 @@ exports.connectorRemote = {
 ## 提问交流
 
 请到 [egg issues](https://github.com/eggjs/egg/issues) 异步交流。
+
+## 附件
+1. [复数lib](https://github.com/blakeembrey/pluralize) - 强迫症患者使用
 
 ## License
 
