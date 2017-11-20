@@ -1,6 +1,6 @@
 {
   "name": "egg-connector-remote",
-  "version": "1.0.0",
+  "version": "0.8.0",
   "description": "Egg remote REST API connector",
   "eggPlugin": {
     "name": "connectorRemote"
@@ -8,20 +8,25 @@
   "keywords": [
     "egg",
     "eggPlugin",
-    "egg-plugin"
+    "egg-plugin",
+    "egg-swagger",
+    "egg-loopback",
+    "egg-remote"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
   "devDependencies": {
-    "autod": "^2.8.0",
+    "autod": "^3.0.1",
     "autod-egg": "^1.0.0",
-    "egg": "^1.4.0",
-    "egg-bin": "^3.4.0",
-    "egg-ci": "^1.6.0",
-    "egg-mock": "^3.7.0",
+    "egg": "^1.11.0",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.13.1",
     "egg-mongoose": "^2.1.1",
     "egg-sequelize": "^3.1.0",
-    "eslint": "^3.19.0",
-    "eslint-config-egg": "^4.2.0",
+    "eslint": "^4.11.0",
+    "eslint-config-egg": "^5.1.1",
     "mysql2": "^1.5.1",
     "supertest": "^3.0.0",
     "tslib": "^1.8.0",
@@ -41,21 +46,22 @@
     "autod": "autod"
   },
   "files": [
-    "app.js",
+    "config",
     "agent.js",
-    "config"
+    "lib",
+    "app.js"
   ],
   "ci": {
     "version": "8"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-connector-remote.git"
+    "url": "git+https://github.com/TheOne1006/egg-connector-remote.git"
   },
   "bugs": {
-    "url": "https://github.com/eggjs/egg/issues"
+    "url": "https://github.com/TheOne1006/egg-connector-remote/issues"
   },
-  "homepage": "https://github.com/eggjs/egg-connector-remote#readme",
+  "homepage": "https://github.com/TheOne1006/egg-connector-remote/blob/master/README.zh_CN.md",
   "author": "theone.io",
   "license": "MIT"
 }
