@@ -11,7 +11,7 @@ module.exports = app => {
 
   const typeName = Person.name;
 
-  Person.setting = {
+  Person.settings = {
     plural: 'people',
     description: 'Person description',
   };

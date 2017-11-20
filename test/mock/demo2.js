@@ -1,7 +1,7 @@
 'use strict';
 
 class Demo {}
-Demo.setting = {
+Demo.settings = {
   description: 'demo for initItemModel',
 };
 

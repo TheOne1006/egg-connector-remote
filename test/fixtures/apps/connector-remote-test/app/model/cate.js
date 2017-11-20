@@ -8,7 +8,7 @@ module.exports = app => {
 
   const typeName = Cate.name;
 
-  Cate.setting = {
+  Cate.settings = {
     description: 'cate description',
   };
 

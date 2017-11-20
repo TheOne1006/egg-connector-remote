@@ -1,6 +1,6 @@
 {
   "name": "egg-connector-remote",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Egg remote REST API connector",
   "eggPlugin": {
     "name": "connectorRemote"

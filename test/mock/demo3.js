@@ -1,7 +1,7 @@
 'use strict';
 
 class Demo {}
-Demo.setting = {
+Demo.settings = {
   description: 'demo for init',
 };
 
@@ -53,7 +53,7 @@ Demo.remotes = {
 };
 
 class Foo {}
-Foo.setting = {
+Foo.settings = {
   description: 'foo for init',
 };
 
