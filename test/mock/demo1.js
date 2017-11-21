@@ -78,7 +78,7 @@ const expectedPath = {
     },
     {
       name: 'data',
-      in: 'formData',
+      in: 'body',
       description: 'Model 实例数据',
       required: false,
       schema: {

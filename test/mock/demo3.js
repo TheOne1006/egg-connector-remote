@@ -210,7 +210,7 @@ const expectedRoot = {
           'text/xml',
         ], // 响应格式
         parameters: [{
-          in: 'formData',
+          in: 'body',
           name: 'data',
           required: true,
           description: 'Model 实例数据',
