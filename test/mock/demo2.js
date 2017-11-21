@@ -50,6 +50,20 @@ Demo.remotes = {
     returns: { arg: 'count', type: 'number' },
     http: { verb: 'get', path: '/count' },
   },
+  login: {
+    isStatic: true,
+    summary: '使用 username 或者 email 和 password 登录.',
+    accepts: [
+      {
+        arg: 'credentials', type: 'object', required: true,
+        http: { source: 'body' },
+      },
+    ],
+    returns: {
+      arg: 'adminInfo', type: 'object', mode: 'demo', root: true,
+    },
+    http: { verb: 'post', path: '/login' },
+  },
 };
 
 const expectedRoot = {
@@ -231,6 +245,48 @@ const expectedRoot = {
           },
         },
         security: [],
+        deprecated: false,
+      },
+    },
+    '/demos/login': {
+      post: {
+        tags: [ 'demo' ],
+        summary: '使用 username 或者 email 和 password 登录.',
+        description: '',
+        operationId: 'demo__login__post__login',
+        produces: [
+          'application/json',
+          'application/xml',
+          'text/xml',
+          'application/javascript',
+          'text/javascript',
+        ],
+        consumes: [
+          'application/json',
+          'application/x-www-form-urlencoded',
+          'application/xml',
+          'text/xml',
+        ],
+        parameters: [
+          {
+            in: 'body',
+            name: 'credentials',
+            description: '',
+            required: true,
+            schema: {
+              type: 'object',
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Request was successful',
+            schema: {
+              type: 'object',
+            },
+          },
+        },
+        security: [ ],
         deprecated: false,
       },
     },
