@@ -195,9 +195,9 @@ describe('test/lib/createSwagger.js', () => {
     // console.log(swagger);
     assert.deepEqual(swagger.tags, expected.tags);
     assert.deepEqual(swagger.definitions, expected.definitions);
-    const swaggerPaths = swagger.paths;
-    const expectedPaths = expected.paths;
-    assert.deepEqual(swaggerPaths, expectedPaths);
+    // const swaggerPaths = swagger;
+    // const expectedPaths = expected;
+    // assert.deepEqual(swaggerPaths, expectedPaths);
     assert.deepEqual(swagger, expected);
 
     // console.log(expectedInfo);
@@ -290,9 +290,11 @@ describe('test/lib/createSwagger.js', () => {
       const expected = {
         200: {
           description: 'Request was successful',
-          type: 'array',
-          items: {
-            $ref: '#/definitions/demo',
+          schema: {
+            type: 'array',
+            items: {
+              $ref: '#/definitions/demo',
+            },
           },
         },
       };

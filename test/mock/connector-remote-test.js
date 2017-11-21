@@ -37,9 +37,11 @@ const expected = {
         responses: {
           200: {
             description: 'Request was successful',
-            type: 'array',
-            items: {
-              $ref: '#/definitions/cate',
+            schema: {
+              type: 'array',
+              items: {
+                $ref: '#/definitions/cate',
+              },
             },
           },
         },

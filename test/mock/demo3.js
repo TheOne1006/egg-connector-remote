@@ -169,9 +169,11 @@ const expectedRoot = {
         responses: {
           200: {
             description: 'Request was successful',
-            type: 'array',
-            items: {
-              $ref: '#/definitions/demo',
+            schema: {
+              type: 'array',
+              items: {
+                $ref: '#/definitions/demo',
+              },
             },
           },
         },
@@ -287,9 +289,11 @@ const expectedRoot = {
         responses: {
           200: {
             description: 'Request was successful',
-            type: 'array',
-            items: {
-              $ref: '#/definitions/foo',
+            schema: {
+              type: 'array',
+              items: {
+                $ref: '#/definitions/foo',
+              },
             },
           },
         },
