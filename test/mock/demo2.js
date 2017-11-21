@@ -65,7 +65,7 @@ const expectedRoot = {
       type: 'object',
       description: 'demo for initItemModel',
       properties: {},
-      required: [],
+      // required: [],
       additionalProperties: false,
     },
   },
@@ -76,8 +76,19 @@ const expectedRoot = {
         summary: '',
         description: '从数据源中找到与筛选器匹配的所有实例.',
         operationId: 'demo__index__get__',
-        produces: [ 'application/json', 'application/xml' ], // 请求格式
-        consumes: [ 'application/json', 'application/xml' ], // 响应格式
+        produces: [
+          'application/json',
+          'application/xml',
+          'text/xml',
+          'application/javascript',
+          'text/javascript',
+        ], // 请求格式
+        consumes: [
+          'application/json',
+          'application/x-www-form-urlencoded',
+          'application/xml',
+          'text/xml',
+        ], // 响应格式
         parameters: [{
           in: 'query',
           name: 'filter',
@@ -105,10 +116,21 @@ const expectedRoot = {
         summary: '创建模型的一个新实例并将其持久化到数据库中.',
         description: '',
         operationId: 'demo__create__post__',
-        produces: [ 'application/json', 'application/xml' ], // 请求格式
-        consumes: [ 'application/json', 'application/xml' ], // 响应格式
+        produces: [
+          'application/json',
+          'application/xml',
+          'text/xml',
+          'application/javascript',
+          'text/javascript',
+        ], // 请求格式
+        consumes: [
+          'application/json',
+          'application/x-www-form-urlencoded',
+          'application/xml',
+          'text/xml',
+        ], // 响应格式
         parameters: [{
-          in: 'body',
+          in: 'formData',
           name: 'data',
           required: true,
           description: 'Model 实例数据',
@@ -134,8 +156,19 @@ const expectedRoot = {
         summary: '通过 {{id}} 获取 Model 实例 并将其从数据源中删除.',
         description: '',
         operationId: 'demo.prototype__destroy__del__id',
-        produces: [ 'application/json', 'application/xml' ], // 请求格式
-        consumes: [ 'application/json', 'application/xml' ], // 响应格式
+        produces: [
+          'application/json',
+          'application/xml',
+          'text/xml',
+          'application/javascript',
+          'text/javascript',
+        ], // 请求格式
+        consumes: [
+          'application/json',
+          'application/x-www-form-urlencoded',
+          'application/xml',
+          'text/xml',
+        ], // 响应格式
         parameters: [{
           in: 'path',
           name: 'id',
@@ -162,8 +195,19 @@ const expectedRoot = {
         summary: '统计 Model 实例数量可以使用, 可以使用 where 参数.',
         description: '',
         operationId: 'demo__count__get__count',
-        produces: [ 'application/json', 'application/xml' ], // 请求格式
-        consumes: [ 'application/json', 'application/xml' ], // 响应格式
+        produces: [
+          'application/json',
+          'application/xml',
+          'text/xml',
+          'application/javascript',
+          'text/javascript',
+        ], // 请求格式
+        consumes: [
+          'application/json',
+          'application/x-www-form-urlencoded',
+          'application/xml',
+          'text/xml',
+        ], // 响应格式
         parameters: [{
           in: 'query',
           name: 'where',

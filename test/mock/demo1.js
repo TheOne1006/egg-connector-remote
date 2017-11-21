@@ -37,8 +37,19 @@ const expectedPath = {
   tags: [ 'demo' ],
   summary: 'summary for demo.',
   description: 'description for demo.',
-  produces: [ 'application/json', 'application/xml' ], // 请求格式
-  consumes: [ 'application/json', 'application/xml' ], // 响应格式
+  produces: [
+    'application/json',
+    'application/xml',
+    'text/xml',
+    'application/javascript',
+    'text/javascript',
+  ], // 请求格式
+  consumes: [
+    'application/json',
+    'application/x-www-form-urlencoded',
+    'application/xml',
+    'text/xml',
+  ], // 响应格式
   operationId: 'demo.prototype__test__post__test',
   parameters: [
     {
@@ -67,7 +78,7 @@ const expectedPath = {
     },
     {
       name: 'data',
-      in: 'body',
+      in: 'formData',
       description: 'Model 实例数据',
       required: false,
       schema: {

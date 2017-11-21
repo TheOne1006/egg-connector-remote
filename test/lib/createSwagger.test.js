@@ -195,11 +195,13 @@ describe('test/lib/createSwagger.js', () => {
     // console.log(swagger);
     assert.deepEqual(swagger.tags, expected.tags);
     assert.deepEqual(swagger.definitions, expected.definitions);
-    // const swaggerPaths = swagger;
-    // const expectedPaths = expected;
-    // assert.deepEqual(swaggerPaths, expectedPaths);
+    const swaggerPaths = swagger.paths;
+    const expectedPaths = expected.paths;
+    assert.deepEqual(swaggerPaths, expectedPaths);
     assert.deepEqual(swagger, expected);
 
+    // const swaggerInfo = swaggerPaths;
+    // const expectedInfo = expectedPaths;
     // console.log(expectedInfo);
     // console.log(expectedInfo);
     // assert.deepEqual(swaggerInfo.tags, expectedInfo.tags);

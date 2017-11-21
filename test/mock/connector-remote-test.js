@@ -22,8 +22,19 @@ const expected = {
         summary: '',
         description: '从数据源中找到与筛选器匹配的所有实例.',
         operationId: 'cate__index__get__',
-        produces: [ 'application/json', 'application/xml' ],
-        consumes: [ 'application/json', 'application/xml' ],
+        produces: [
+          'application/json',
+          'application/xml',
+          'text/xml',
+          'application/javascript',
+          'text/javascript',
+        ], // 请求格式
+        consumes: [
+          'application/json',
+          'application/x-www-form-urlencoded',
+          'application/xml',
+          'text/xml',
+        ], // 响应格式
         parameters: [
           {
             in: 'query',
@@ -55,8 +66,19 @@ const expected = {
         summary: '',
         description: '从数据源中通过 {{id}} 查找 Model 的实例 .',
         operationId: 'cate.prototype__show__get__id',
-        produces: [ 'application/json', 'application/xml' ],
-        consumes: [ 'application/json', 'application/xml' ],
+        produces: [
+          'application/json',
+          'application/xml',
+          'text/xml',
+          'application/javascript',
+          'text/javascript',
+        ], // 请求格式
+        consumes: [
+          'application/json',
+          'application/x-www-form-urlencoded',
+          'application/xml',
+          'text/xml',
+        ], // 响应格式
         parameters: [
           { in: 'path',
             name: 'id',
@@ -90,8 +112,19 @@ const expected = {
         summary: 'summary for Persion.prototype.foo',
         description: '',
         operationId: 'person.prototype__foo__post__id_foo',
-        produces: [ 'application/json', 'application/xml' ],
-        consumes: [ 'application/json', 'application/xml' ],
+        produces: [
+          'application/json',
+          'application/xml',
+          'text/xml',
+          'application/javascript',
+          'text/javascript',
+        ], // 请求格式
+        consumes: [
+          'application/json',
+          'application/x-www-form-urlencoded',
+          'application/xml',
+          'text/xml',
+        ], // 响应格式
         parameters: [
           { in: 'path',
             name: 'id',
@@ -119,14 +152,14 @@ const expected = {
       type: 'object',
       description: 'cate description',
       properties: {},
-      required: [],
+      // required: [],
       additionalProperties: false,
     },
     person: {
       type: 'object',
       description: 'Person description',
       properties: {},
-      required: [],
+      // required: [],
       additionalProperties: false,
     },
   },
