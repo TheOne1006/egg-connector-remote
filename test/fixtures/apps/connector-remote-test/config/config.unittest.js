@@ -18,6 +18,10 @@ module.exports = () => {
       timezone: '+08:01',
     },
     keys: '123456',
+    connectorRemote: {
+      enable: true,
+      registerRemote: false,
+    },
   };
 
   return config;

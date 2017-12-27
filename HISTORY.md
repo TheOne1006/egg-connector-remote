@@ -1,3 +1,7 @@
+## 20171127
+
+1. 增加 validate 校验参数
+
 ## 20171126
 
 1. 增加 registerRemote 方法
