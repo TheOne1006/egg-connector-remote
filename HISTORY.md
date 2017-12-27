@@ -1,3 +1,8 @@
+## 20171126
+
+1. 增加 registerRemote 方法
+2. 自定义 使用Controller, 并且动态创建 controller 的 方法
+
 ## 20171121
 
 1. 修正 response schema

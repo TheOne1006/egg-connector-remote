@@ -12,8 +12,4 @@ module.exports = {
     enable: true,
     package: 'egg-connector-remote',
   },
-  validate: {
-    enable: true,
-    package: 'egg-validate',
-  },
 };
