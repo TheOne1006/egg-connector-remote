@@ -3,7 +3,7 @@
 const assert = require('assert');
 const request = require('supertest');
 const mm = require('egg-mock');
-const cookie = require('cookie');
+// const cookie = require('cookie');
 const { initUsers,
   initArticles,
   initRoles,
@@ -47,9 +47,9 @@ describe('test/access-remote.test.js', () => {
       const agent = await request.agent(app.callback());
 
       const res = await agent
-        .get('/api/v1/articles');
+        .get('/api/v1/articles')
+        .expect(200);
 
-      assert.equal(200, res.status);
       assert.equal(3, res.body.length);
     });
 
@@ -63,7 +63,7 @@ describe('test/access-remote.test.js', () => {
     });
   });
 
-  describe('with user1 token access', () => {
+  describe.skip('with user1 token access', () => {
     const token = 1;
     it('200 should GET /api/v1/articles', async () => {
       const agent = await request.agent(app.callback());
@@ -95,7 +95,7 @@ describe('test/access-remote.test.js', () => {
     });
   });
 
-  describe('with user2 token access', () => {
+  describe.skip('with user2 token access', () => {
     const token = 2;
     it('200 should GET /api/v1/articles', async () => {
       const agent = await request.agent(app.callback());
@@ -127,7 +127,7 @@ describe('test/access-remote.test.js', () => {
     });
   });
 
-  describe('with userAdmin token access', () => {
+  describe.skip('with userAdmin token access', () => {
     const token = 3;
     it('200 should GET /api/v1/articles', async () => {
       const agent = await request.agent(app.callback());

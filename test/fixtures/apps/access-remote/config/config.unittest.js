@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = app => {
+module.exports = appInfo => {
   const config = {
     sequelize: {
       port: '3306',
@@ -21,10 +21,11 @@ module.exports = app => {
     connectorRemote: {
       enable: true,
       registerRemote: true,
-      access: {
-        getUserModel: () => app.model.user,
-        getRoleModel: () => app.model.role,
-        getRoleMappingModel: () => app.model.roleMapping,
+      accessRemote: {
+        enable: true,
+        getRoleModelSelector: 'model.Role',
+        // getUserModel: () => app.model.User,
+        // getRoleMappingModel: () => app.model.RoleMapping,
       },
     },
   };

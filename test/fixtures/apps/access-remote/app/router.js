@@ -6,7 +6,8 @@ module.exports = app => {
     // this.body = this.csrf;
   });
   app.registerRemote(app.model.User);
-  // app.registerRemote(app.model.Article);
+  app.registerRemote(app.model.Article);
+  // app.registerRemote(app.model.Role);
   // app.get('/api/v1/cates', function* () {
   //   this.body = 'hi';
   // });
