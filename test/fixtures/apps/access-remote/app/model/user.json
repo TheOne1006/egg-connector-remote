@@ -1,0 +1,243 @@
+{
+  "settings": {
+    "description": "user description",
+    "acls": [{
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "DENY",
+        "property": "*"
+      },
+      {
+        "principalType": "ROLE",
+        "principalId": "admin",
+        "permission": "ALLOW",
+        "property": "index"
+      },
+      {
+        "accessType": "READ",
+        "principalType": "ROLE",
+        "principalId": "$owner",
+        "permission": "ALLOW",
+        "property": "show"
+      },
+      {
+        "principalType": "ROLE",
+        "principalId": "create_user",
+        "permission": "ALLOW",
+        "property": [
+          "destroyById",
+          "count",
+          "create"
+        ]
+      },
+      {
+        "principalType": "ROLE",
+        "principalId": "update_user",
+        "permission": "ALLOW",
+        "property": [
+          "destroyById",
+          "count",
+          "updateAttributes"
+        ]
+      }
+    ]
+  },
+  "remotes": {
+    "index": {
+      "description": "从数据源中找到与筛选器匹配的所有实例.",
+      "isStatic": true,
+      "accepts": [{
+        "arg": "filter",
+        "type": "object",
+        "description": "过滤定义 fields, where, include, order, offset, 以及 limit"
+      } ],
+      "returns": {
+        "arg": "data",
+        "type": "array",
+        "model": "user",
+        "root": true
+      },
+      "http": {
+        "verb": "get",
+        "path": "/"
+      }
+    },
+    "show": {
+      "description": "从数据源中通过 {{id}} 查找 Model 的实例 .",
+      "accepts": [{
+          "arg": "id",
+          "type": "number",
+          "description": "Model id",
+          "required": true,
+          "http": {
+            "source": "path"
+          }
+        },
+        {
+          "arg": "filter",
+          "type": "object",
+          "description": "定义 fields(字段) 和 include"
+        }
+      ],
+      "returns": {
+        "arg": "data",
+        "model": "user",
+        "type": "object",
+        "root": true
+      },
+      "http": {
+        "verb": "get",
+        "path": "/:id"
+      }
+    },
+    "create": {
+      "summary": "创建模型的一个新实例并将其持久化到数据库中.",
+      "accessType": "WRITE",
+      "isStatic": true,
+      "accepts": {
+        "arg": "data",
+        "type": "object",
+        "model": "user",
+        "description": "Model 实例数据",
+        "root": true,
+        "http": {
+          "source": "body"
+        }
+      },
+      "returns": {
+        "arg": "data",
+        "model": "user",
+        "type": "object",
+        "root": true
+      },
+      "http": {
+        "verb": "post",
+        "path": "/"
+      }
+    },
+    "updateAttributes": {
+      "summary": "更新模型实例的属性并将其持久化到数据源中.",
+      "accessType": "WRITE",
+      "isStatic": false,
+      "accepts": [{
+          "arg": "data",
+          "type": "object",
+          "model": "user",
+          "root": true,
+          "http": {
+            "source": "body"
+          },
+          "description": "模型属性名称/值对的对象"
+        },
+        {
+          "arg": "id",
+          "type": "integer",
+          "description": "Model id",
+          "required": true,
+          "http": {
+            "source": "path"
+          }
+        }
+      ],
+      "returns": {
+        "arg": "data",
+        "model": "user",
+        "type": "object",
+        "root": true
+      },
+      "http": {
+        "verb": "put",
+        "path": "/:id"
+      }
+    },
+    "destroyById": {
+      "aliases": ["destroy", "removeById"],
+      "isStatic": true,
+      "summary": "通过 {{id}} 获取 Model 实例 并将其从数据源中删除.",
+      "accepts": {
+        "arg": "id",
+        "type": "integer",
+        "description": "Model id",
+        "required": true,
+        "http": {
+          "source": "path"
+        }
+      },
+      "http": {
+        "verb": "del",
+        "path": "/:id"
+      },
+      "returns": {
+        "arg": "count",
+        "type": "object",
+        "root": true
+      }
+    },
+    "count": {
+      "summary": "统计 Model 实例数量可以使用, 可以使用 where 参数.",
+      "isStatic": true,
+      "accepts": {
+        "arg": "where",
+        "type": "object",
+        "description": "where 条件"
+      },
+      "returns": {
+        "arg": "count",
+        "type": "number"
+      },
+      "http": {
+        "verb": "get",
+        "path": "/count"
+      }
+    },
+    "exists": {
+      "summary": "通过 {{id}} 获取 Model 实例 是否存在.",
+      "isStatic": true,
+      "accepts": {
+        "arg": "id",
+        "type": "integer",
+        "description": "Model id",
+        "required": true,
+        "http": {
+          "source": "path"
+        }
+      },
+      "http": {
+        "verb": "get",
+        "path": "/exists/:id"
+      },
+      "returns": {
+        "arg": "exists",
+        "type": "bool"
+      }
+    },
+    "updateAll": {
+      "summary": "批量更新Model 所有实例",
+      "isStatic": true,
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "description": "Model 需要更新的数据",
+        "http": {
+          "source": "body"
+        },
+        "root": true
+      }, {
+        "arg": "where",
+        "type": "object",
+        "description": "where 条件",
+        "http": {
+          "source": "query"
+        }
+      }],
+      "http": {
+        "verb": "put",
+        "path": "/"
+      },
+      "returns": {
+        "arg": "affectedRows",
+        "type": "object"
+      }
+    }
+  }
+}

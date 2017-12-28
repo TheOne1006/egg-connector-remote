@@ -71,6 +71,11 @@ exports.connectorRemote = {
       },
       basePath: '/api/v1',
     },
+    registerRemote: true, // 开启注册 remote 功能
+    accessRemoteDefinition: {
+      roleModel: undefined, // role 的 Model, 需要实现
+      userModel: undefined, // user 的 Model, 需要实现
+    },
   };
 ```
 
