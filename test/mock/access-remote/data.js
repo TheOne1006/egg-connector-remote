@@ -54,28 +54,52 @@ const role2 = {
   desc: '超级管理员',
 };
 
+const role3 = {
+  id: 3,
+  name: 'create_user',
+  desc: '创建者',
+};
+
+const role4 = {
+  id: 4,
+  name: 'update_user',
+  desc: '更新者',
+};
+
 const roleMapping1 = {
   id: 1,
   principalType: 'USER',
-  principalId: 1,
-  roleId: 1,
+  principalId: user1.id,
+  roleId: role1.id,
 };
 const roleMapping2 = {
   id: 2,
   principalType: 'USER',
-  principalId: 2,
-  roleId: 1,
+  principalId: user2.id,
+  roleId: role1.id,
 };
 const roleMapping3 = {
   id: 3,
   principalType: 'USER',
-  principalId: 3,
-  roleId: 2,
+  principalId: userAdmin.id,
+  roleId: role2.id,
+};
+const roleMapping4 = {
+  id: 4,
+  principalType: 'USER',
+  principalId: user1.id,
+  roleId: role3.id,
+};
+const roleMapping5 = {
+  id: 5,
+  principalType: 'USER',
+  principalId: user2.id,
+  roleId: role4.id,
 };
 const initUsers = [ user1, user2, userAdmin ];
 const initArticles = [ article1, article2, article3 ];
-const initRoles = [ role1, role2 ];
-const initRoleMappings = [ roleMapping1, roleMapping2, roleMapping3 ];
+const initRoles = [ role1, role2, role3, role4 ];
+const initRoleMappings = [ roleMapping1, roleMapping2, roleMapping3, roleMapping4, roleMapping5 ];
 
 module.exports = {
   initUsers,

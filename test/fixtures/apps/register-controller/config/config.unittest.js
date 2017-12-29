@@ -2,6 +2,10 @@
 
 module.exports = () => {
   const config = {
+    logger: {
+      level: 'NONE',
+      consoleLevel: 'NONE',
+    },
     sequelize: {
       port: '3306',
       host: '127.0.0.1',

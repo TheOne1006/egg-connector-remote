@@ -42,6 +42,10 @@ module.exports = app => {
   Article.prototype.show = async function() {
     return this;
   };
+  Article.countAll = async function(ctx, filter) {
+    const count = await Article.count(filter);
+    return { count };
+  };
 
   Article.exists = async function(ctx, id) {
     const instance = await Article.findById(id);

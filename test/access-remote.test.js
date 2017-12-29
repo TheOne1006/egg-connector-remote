@@ -3,7 +3,8 @@
 const assert = require('assert');
 const request = require('supertest');
 const mm = require('egg-mock');
-// const cookie = require('cookie');
+const cookie = require('cookie');
+
 const { initUsers,
   initArticles,
   initRoles,
@@ -61,6 +62,15 @@ describe('test/access-remote.test.js', () => {
 
       assert.equal(401, res.status);
     });
+
+    it('401 authorization ERROR should /api/v1/articles/count', async () => {
+      const agent = await request.agent(app.callback());
+
+      const res = await agent
+        .get('/api/v1/articles/count');
+
+      assert.equal(401, res.status);
+    });
   });
 
   describe('with user1 token access', () => {
@@ -93,6 +103,16 @@ describe('test/access-remote.test.js', () => {
 
       assert.equal(401, res.status);
     });
+
+    it('200 should /api/v1/articles/count', async () => {
+      const agent = await request.agent(app.callback());
+
+      const res = await agent
+        .get(`/api/v1/articles/count?_token=${token}`);
+
+      assert.equal(200, res.status);
+      assert.equal(3, res.body.count);
+    });
   });
 
   describe('with user2 token access', () => {
@@ -124,6 +144,16 @@ describe('test/access-remote.test.js', () => {
 
       assert.equal(200, res.status);
       assert.deepEqual(initArticles[1], res.body);
+    });
+
+    it('200 should /api/v1/articles/count', async () => {
+      const agent = await request.agent(app.callback());
+
+      const res = await agent
+        .get(`/api/v1/articles/count?_token=${token}`);
+
+      assert.equal(200, res.status);
+      assert.equal(3, res.body.count);
     });
   });
 
@@ -158,6 +188,135 @@ describe('test/access-remote.test.js', () => {
       assert.equal(200, res.status);
       assert.deepEqual(initArticles[1], res.body);
     });
+
+    it('200 should /api/v1/articles/count', async () => {
+      const agent = await request.agent(app.callback());
+
+      const res = await agent
+        .get(`/api/v1/articles/count?_token=${token}`);
+
+      assert.equal(200, res.status);
+      assert.equal(3, res.body.count);
+    });
   });
+
+  describe('with role create_user', () => {
+
+    it('should POST /api/v1/articles withToken 1', async () => {
+      const token = 1;
+      const agent = await request.agent(app.callback());
+
+      const preRes = await agent
+        .get('/')
+        .set('accept', 'text/html')
+        .expect(200);
+      const cookieObj = cookie.parse(preRes.header['set-cookie'][0]);
+      const csrfToken = cookieObj.csrfToken;
+
+      const res = await agent
+        .post(`/api/v1/articles?_token=${token}`)
+        .set('content-type', 'application/json')
+        .send({
+          _csrf: csrfToken,
+          title: 'title-creater',
+          desc: 'desc-creater',
+          content: 'content',
+        })
+        .expect(200);
+      const expected = {
+        id: 4,
+        title: 'title-creater',
+        desc: 'desc-creater',
+        content: 'content',
+      };
+      assert.deepEqual(expected, res.body);
+    });
+
+    it('should 401 Error when POST /api/v1/articles withToken 2', async () => {
+      const token = 2;
+      const agent = await request.agent(app.callback());
+
+      const preRes = await agent
+        .get('/')
+        .set('accept', 'text/html')
+        .expect(200);
+      const cookieObj = cookie.parse(preRes.header['set-cookie'][0]);
+      const csrfToken = cookieObj.csrfToken;
+
+      const res = await agent
+        .post(`/api/v1/articles?_token=${token}`)
+        .set('content-type', 'application/json')
+        .send({
+          _csrf: csrfToken,
+          title: 'title-error',
+          desc: 'desc-error',
+          content: 'content-error',
+        });
+
+      assert.equal(401, res.status);
+    });
+
+  });
+
+  describe('with role update_user', () => {
+
+    it('should 401 Error when PUT /api/v1/articles withToken 1', async () => {
+      const token = 1;
+      const agent = await request.agent(app.callback());
+
+      const preRes = await agent
+        .get('/')
+        .set('accept', 'text/html')
+        .expect(200);
+      const cookieObj = cookie.parse(preRes.header['set-cookie'][0]);
+      const csrfToken = cookieObj.csrfToken;
+
+      const res = await agent
+        .put(`/api/v1/articles/3?_token=${token}`)
+        .set('content-type', 'application/json')
+        .send({
+          _csrf: csrfToken,
+          title: 'title-error',
+          desc: 'desc-error',
+          content: 'content',
+        });
+
+      assert.equal(401, res.status);
+    });
+
+    it('should PUT /api/v1/articles withToken 2', async () => {
+      const token = 2;
+      const agent = await request.agent(app.callback());
+
+      const preRes = await agent
+        .get('/')
+        .set('accept', 'text/html')
+        .expect(200);
+      const cookieObj = cookie.parse(preRes.header['set-cookie'][0]);
+      const csrfToken = cookieObj.csrfToken;
+
+      const res = await agent
+        .put(`/api/v1/articles/3?_token=${token}`)
+        .set('content-type', 'application/json')
+        .send({
+          _csrf: csrfToken,
+          title: 'title-update',
+          desc: 'desc-update',
+          content: 'content-update',
+        });
+
+      assert.equal(200, res.status);
+      const expected = {
+        id: 3,
+        title: 'title-update',
+        desc: 'desc-update',
+        content: 'content-update',
+        userId: 1,
+      };
+      assert.deepEqual(expected, res.body);
+    });
+
+  });
+
 
 });

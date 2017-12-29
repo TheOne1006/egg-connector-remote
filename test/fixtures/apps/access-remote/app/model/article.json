@@ -22,22 +22,35 @@
       },
       {
         "principalType": "ROLE",
+        "principalId": [ "create_user", "update_user", "admin"],
+        "permission": "ALLOW",
+        "property": "countAll"
+      },
+      {
+        "accessType": "READ",
+        "principalType": "ROLE",
+        "principalId": "update_user",
+        "permission": "ALLOW",
+        "property": "countAll"
+      },
+      {
+        "accessType": "WRITE",
+        "principalType": "ROLE",
         "principalId": "create_user",
         "permission": "ALLOW",
         "property": [
           "destroyById",
-          "count",
           "create"
         ]
       },
       {
+        "accessType": "WRITE",
         "principalType": "ROLE",
         "principalId": "update_user",
         "permission": "ALLOW",
         "property": [
-          "destroyById",
-          "count",
-          "updateAttributes"
+          "updateAttributes",
+          "destroyById"
         ]
       }
     ]
@@ -173,7 +186,7 @@
         "root": true
       }
     },
-    "count": {
+    "countAll": {
       "summary": "统计 Model 实例数量可以使用, 可以使用 where 参数.",
       "isStatic": true,
       "accepts": {
