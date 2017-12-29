@@ -73,8 +73,7 @@ exports.connectorRemote = {
     },
     registerRemote: true, // 开启注册 remote 功能
     accessRemoteDefinition: {
-      roleModel: undefined, // role 的 Model, 需要实现
-      userModel: undefined, // user 的 Model, 需要实现
+      getMatchFunc: function() => {}, // role 的 Model, 获取验证的方法。
     },
   };
 ```
@@ -90,6 +89,8 @@ npm run test
 2. [x] remote：自动处理 Model.setting 和 ctrl 的关系以及路由的关系
 3. [x] Test parameter: 自动校验输入输出参数
 4. [x] access controller: 访问控制, 权鉴设置
+5. [] 动态增加 remote
+6. [] 增加beforeRemote  和 afterRemote
 
 ## 提问交流
 
@@ -97,6 +98,7 @@ npm run test
 
 ## 附件
 1. [复数lib](https://github.com/blakeembrey/pluralize) - 强迫症患者使用
+
 
 ## License
 

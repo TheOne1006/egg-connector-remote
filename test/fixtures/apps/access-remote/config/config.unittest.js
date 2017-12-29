@@ -27,7 +27,7 @@ module.exports = () => {
       registerRemote: true,
       accessRemote: {
         enable: true,
-        getRoleModelSelector: 'model.Role',
+        getMatchFunc: app => app.model.Role._isInRole,
       },
     },
   };
