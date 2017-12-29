@@ -87,8 +87,9 @@ npm run test
 ## feature
 
 1. [x] config2swagger： 使用 model.setting 的配置生成 swagger相关文件。
-2. [ ] remote：自动处理 Model.setting 和 ctrl 的关系以及路由的关系
-3. [ ] Test parameter: 自动校验输入输出参数
+2. [x] remote：自动处理 Model.setting 和 ctrl 的关系以及路由的关系
+3. [x] Test parameter: 自动校验输入输出参数
+4. [x] access controller: 访问控制, 权鉴设置
 
 ## 提问交流
 

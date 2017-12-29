@@ -15,7 +15,9 @@ module.exports = app => {
   // const typeName = Article.name;
 
   // 判断是否属于自身
-  Article._isOwner = function isOwner() {
+  Article.BelongOwnerById = async function BelongOwnerById(userId, id) {
+    const instance = await Article.findOne({ where: { userId, id } });
+    return !!instance;
   };
 
   Article.settings = articleJSON.settings;

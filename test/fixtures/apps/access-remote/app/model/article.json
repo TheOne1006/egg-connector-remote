@@ -16,7 +16,7 @@
       {
         "accessType": "READ",
         "principalType": "ROLE",
-        "principalId": "$owner",
+        "principalId": [ "$owner", "admin" ],
         "permission": "ALLOW",
         "property": "show"
       },

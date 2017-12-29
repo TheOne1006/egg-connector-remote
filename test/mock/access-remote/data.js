@@ -2,17 +2,20 @@
 
 const user1 = {
   id: 1,
-  name: 'user1',
+  username: 'user1',
+  password: 'pwd',
   desc: null,
 };
 const user2 = {
   id: 2,
-  name: 'user2',
+  username: 'user2',
+  password: 'pwd',
   desc: null,
 };
 const userAdmin = {
   id: 3,
-  name: 'admin',
+  username: 'admin',
+  password: 'pwd',
 };
 
 const article1 = {
@@ -25,7 +28,7 @@ const article1 = {
 
 const article2 = {
   id: 2,
-  title: 'title3',
+  title: 'title2',
   desc: 'desc2',
   content: 'content2 belong user 2',
   userId: user2.id,
@@ -47,7 +50,7 @@ const role1 = {
 
 const role2 = {
   id: 2,
-  name: 'superAdmin',
+  name: 'admin',
   desc: '超级管理员',
 };
 

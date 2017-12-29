@@ -63,7 +63,7 @@ describe('test/access-remote.test.js', () => {
     });
   });
 
-  describe.skip('with user1 token access', () => {
+  describe('with user1 token access', () => {
     const token = 1;
     it('200 should GET /api/v1/articles', async () => {
       const agent = await request.agent(app.callback());
@@ -82,20 +82,20 @@ describe('test/access-remote.test.js', () => {
         .get(`/api/v1/articles/1?_token=${token}`);
 
       assert.equal(200, res.status);
-      assert.equal(initArticles[0], res.body);
+      assert.deepEqual(initArticles[0], res.body);
     });
 
     it('401 authorization ERROR /api/v1/articles/2', async () => {
       const agent = await request.agent(app.callback());
 
       const res = await agent
-        .get(`/api/v1/articles/1?_token=${token}`);
+        .get(`/api/v1/articles/2?_token=${token}`);
 
       assert.equal(401, res.status);
     });
   });
 
-  describe.skip('with user2 token access', () => {
+  describe('with user2 token access', () => {
     const token = 2;
     it('200 should GET /api/v1/articles', async () => {
       const agent = await request.agent(app.callback());
@@ -123,11 +123,11 @@ describe('test/access-remote.test.js', () => {
         .get(`/api/v1/articles/2?_token=${token}`);
 
       assert.equal(200, res.status);
-      assert.equal(initArticles[1], res.body);
+      assert.deepEqual(initArticles[1], res.body);
     });
   });
 
-  describe.skip('with userAdmin token access', () => {
+  describe('with userAdmin token access', () => {
     const token = 3;
     it('200 should GET /api/v1/articles', async () => {
       const agent = await request.agent(app.callback());
@@ -146,7 +146,7 @@ describe('test/access-remote.test.js', () => {
         .get(`/api/v1/articles/1?_token=${token}`);
 
       assert.equal(200, res.status);
-      assert.equal(initArticles[0], res.body);
+      assert.deepEqual(initArticles[0], res.body);
     });
 
     it('200 should GET /api/v1/articles/2', async () => {
@@ -156,7 +156,7 @@ describe('test/access-remote.test.js', () => {
         .get(`/api/v1/articles/2?_token=${token}`);
 
       assert.equal(200, res.status);
-      assert.equal(initArticles[1], res.body);
+      assert.deepEqual(initArticles[1], res.body);
     });
   });
 
