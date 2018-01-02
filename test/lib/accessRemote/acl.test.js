@@ -4,7 +4,8 @@ const ACL = require('../../../lib/accessRemote/acl');
 
 describe('test/lib/registerRemote/helper.js', () => {
   describe('ACL.getMatchingScore()', () => {
-    let rule, req;
+    let rule,
+      req;
     beforeEach(() => {
       rule = {
         model: 'article',
@@ -55,8 +56,6 @@ describe('test/lib/registerRemote/helper.js', () => {
       const score7 = ACL.getMatchingScore(rule, req);
       assert.equal(8136, score7);
     });
-
-
   });
 
   describe('checkAccessForContext()', () => {
