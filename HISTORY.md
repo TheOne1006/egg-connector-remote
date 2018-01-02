@@ -1,3 +1,8 @@
+## 20180102
+
+1. 完成权限控制
+2. 优化 DefaultClass 依赖于 egg.Controller
+
 ## 20171128
 
 1. 权限控制 增加测试demo
