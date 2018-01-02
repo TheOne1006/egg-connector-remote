@@ -20,13 +20,11 @@
 [download-image]: https://img.shields.io/npm/dm/egg-connector-remote.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-connector-remote
 
-<!--
-Description here.
--->
+使用配置json的方式快速构建 restful api, 以及相应的 swagger 生成文件。类似于 loopback
 
 ## 依赖说明
 
-规则来自于
+swagger.json 规则来自于
 <https://editor.swagger.io//?_ga=2.41951072.471192285.1510301833-940518916.1510301833#/>
 
 
@@ -52,6 +50,11 @@ exports.connectorRemote = {
 ```
 ## 功能
 
+1. 通过配置生成 swagger.json 的信息，配置语法 参考 loopback <http://loopback.io/doc/en/lb3/Define-model-relations.html>
+2. 增加 registerRemote 全局方法. 自动处理 model 和 ctrl 的关系
+3. 增加 access 访问控制 同 loopback
+  - 仅适用 role
+  
 ## 使用场景
 
 - 类似 loopback 的 rest方式暴露出 `swagger.json`
@@ -73,6 +76,7 @@ exports.connectorRemote = {
     },
     registerRemote: true, // 开启注册 remote 功能
     accessRemoteDefinition: {
+      enable: true, // 默认 false, 是否开启访问控制
       getMatchFunc: function() => {}, // role 的 Model, 获取验证的方法。
     },
   };
@@ -91,6 +95,7 @@ npm run test
 4. [x] access controller: 访问控制, 权鉴设置
 5. [] 动态增加 remote
 6. [] 增加beforeRemote  和 afterRemote
+7. [] 测试关于 mongoose 的支持
 
 ## 提问交流
 

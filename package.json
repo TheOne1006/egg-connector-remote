@@ -1,7 +1,7 @@
 {
   "name": "egg-connector-remote",
-  "version": "0.8.7",
-  "description": "Egg remote REST API connector",
+  "version": "1.0.0",
+  "description": "Egg remote REST API connector like loopback",
   "eggPlugin": {
     "name": "connectorRemote"
   },
@@ -11,7 +11,8 @@
     "egg-plugin",
     "egg-swagger",
     "egg-loopback",
-    "egg-remote"
+    "egg-remote",
+    "restful"
   ],
   "dependencies": {
     "lodash": "^4.17.4",
