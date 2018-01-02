@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 module.exports = () => {
   const config = {
     logger: {
@@ -24,6 +25,7 @@ module.exports = () => {
     keys: '123456',
     connectorRemote: {
       enable: true,
+      modelsPath: app => _.map(app.model.models, item => item),
       registerRemote: true,
       accessRemote: {
         enable: true,
