@@ -49,6 +49,7 @@ describe('test/lib/createSwagger.js', () => {
         host: 'theone.io',
         basePath: '/v1',
         schemes: [ 'http' ],
+        securityDefinitions: {},
       };
       const targetSwagger = createSwagger.extendBase(config);
       assert.deepEqual(targetSwagger, expected);
