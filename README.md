@@ -54,7 +54,7 @@ exports.connectorRemote = {
 2. 增加 registerRemote 全局方法. 自动处理 model 和 ctrl 的关系
 3. 增加 access 访问控制 同 loopback
   - 仅适用 role
-  
+
 ## 使用场景
 
 - 类似 loopback 的 rest方式暴露出 `swagger.json`
@@ -107,3 +107,10 @@ npm run test
 ## License
 
 [MIT](LICENSE)
+
+## 发布
+
+```bash
+npm login
+npm publish
+```
