@@ -1,6 +1,6 @@
 {
   "name": "egg-connector-remote",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Egg remote REST API connector like loopback",
   "eggPlugin": {
     "name": "connectorRemote"
@@ -50,6 +50,7 @@
     "autod": "autod"
   },
   "files": [
+    "app",
     "config",
     "agent.js",
     "lib",

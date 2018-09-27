@@ -34,6 +34,7 @@ const expected = {
           'application/x-www-form-urlencoded',
           'application/xml',
           'text/xml',
+          'multipart/form-data',
         ], // 响应格式
         parameters: [
           {
@@ -78,6 +79,7 @@ const expected = {
           'application/x-www-form-urlencoded',
           'application/xml',
           'text/xml',
+          'multipart/form-data',
         ], // 响应格式
         parameters: [
           { in: 'path',
@@ -124,6 +126,7 @@ const expected = {
           'application/x-www-form-urlencoded',
           'application/xml',
           'text/xml',
+          'multipart/form-data',
         ], // 响应格式
         parameters: [
           { in: 'path',

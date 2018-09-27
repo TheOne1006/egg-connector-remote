@@ -102,6 +102,7 @@ const expectedRoot = {
           'application/x-www-form-urlencoded',
           'application/xml',
           'text/xml',
+          'multipart/form-data',
         ], // 响应格式
         parameters: [{
           in: 'query',
@@ -142,6 +143,7 @@ const expectedRoot = {
           'application/x-www-form-urlencoded',
           'application/xml',
           'text/xml',
+          'multipart/form-data',
         ], // 响应格式
         parameters: [{
           in: 'body',
@@ -182,6 +184,7 @@ const expectedRoot = {
           'application/x-www-form-urlencoded',
           'application/xml',
           'text/xml',
+          'multipart/form-data',
         ], // 响应格式
         parameters: [{
           in: 'path',
@@ -221,6 +224,7 @@ const expectedRoot = {
           'application/x-www-form-urlencoded',
           'application/xml',
           'text/xml',
+          'multipart/form-data',
         ], // 响应格式
         parameters: [{
           in: 'query',
@@ -266,6 +270,7 @@ const expectedRoot = {
           'application/x-www-form-urlencoded',
           'application/xml',
           'text/xml',
+          'multipart/form-data',
         ],
         parameters: [
           {

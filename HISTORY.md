@@ -1,3 +1,6 @@
+## 20180927
+1. 支持 file 上传
+
 ## 20180130
 
 1. 支持可设置 securityDefinitions

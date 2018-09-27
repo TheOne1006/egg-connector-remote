@@ -4,6 +4,7 @@ const assert = require('assert');
 const request = require('supertest');
 const mm = require('egg-mock');
 const cookie = require('cookie');
+const path = require('path');
 
 const { initUsers,
   initArticles,
@@ -35,7 +36,7 @@ describe('test/access-remote.test.js', () => {
   afterEach(mm.restore);
 
   describe('without token access', () => {
-    it('401 authorization ERROR GET /api/v1/users', async () => {
+    it('401 authorization file GET /api/v1/users', async () => {
       const agent = await request.agent(app.callback());
 
       const res = await agent
@@ -316,6 +317,77 @@ describe('test/access-remote.test.js', () => {
       assert.deepEqual(expected, res.body);
     });
 
+  });
+
+  describe('with user upload file', () => {
+    it('should upload file when POST /api/v1/users/1/uploadFile withOutToken', async () => {
+      const agent = await request.agent(app.callback());
+
+      const preRes = await agent
+        .get('/')
+        .set('accept', 'text/html')
+        .expect(200);
+      const cookieObj = cookie.parse(preRes.header['set-cookie'][0]);
+      const csrfToken = cookieObj.csrfToken;
+
+
+      const testPng = path.join(__dirname, 'mock/test-png.png');
+      const test2Png = path.join(__dirname, 'mock/test-png.2.png');
+
+      // console.log(testPng);
+      const res = await agent
+        .post(`/api/v1/users/1/uploadFile?_csrf=${csrfToken}`)
+        .set('Content-Type', 'multipart/form-data')
+        .set('Accept', 'application/json')
+        .field('data', '{"test": 123 }')
+        .attach('file1', testPng)
+        .attach('file2', test2Png);
+
+      assert.equal(200, res.status);
+
+      const matchObj = {
+        file1Name: 'test-png.png',
+        file2Name: 'test-png.2.png',
+        file1IsinstanceOfFileStream: true,
+        file2IsinstanceOfFileStream: true,
+        userId: 1,
+        data: { test: 123 },
+      };
+
+      assert.deepEqual(matchObj, res.body);
+    });
+
+    it('should without file when POST /api/v1/users/1/uploadFile withOutToken', async () => {
+      const agent = await request.agent(app.callback());
+
+      const preRes = await agent
+        .get('/')
+        .set('accept', 'text/html')
+        .expect(200);
+      const cookieObj = cookie.parse(preRes.header['set-cookie'][0]);
+      const csrfToken = cookieObj.csrfToken;
+
+
+      // console.log(testPng);
+      const res = await agent
+        .post(`/api/v1/users/1/uploadFile?_csrf=${csrfToken}`)
+        .set('Content-Type', 'multipart/form-data')
+        .set('Accept', 'application/json')
+        .field('data', '{"test": 123 }');
+
+      assert.equal(400, res.status);
+
+      // const matchObj = {
+      //   file1Name: 'test-png.png',
+      //   file2Name: 'test-png.2.png',
+      //   file1IsinstanceOfFileStream: true,
+      //   file2IsinstanceOfFileStream: true,
+      //   userId: 1,
+      //   data: { test: 123 },
+      // };
+
+      // assert.deepEqual(matchObj, res.body);
+    });
   });
 
 

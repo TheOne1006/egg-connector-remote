@@ -39,6 +39,12 @@
           "count",
           "updateAttributes"
         ]
+      },
+      {
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW",
+        "property": "uploadFile"
       }
     ]
   },
@@ -209,6 +215,54 @@
       "returns": {
         "arg": "exists",
         "type": "bool"
+      }
+    },
+    "uploadFile": {
+      "summary": "通过 {{id}} 上传 多个 文件.",
+      "isStatic": false,
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "integer",
+          "description": "Model id",
+          "required": true,
+          "http": {
+            "source": "path"
+          }
+        },
+        {
+          "arg": "data",
+          "type": "object",
+          "description": "发送消息内容",
+          "required": true,
+          "http": {
+            "source": "formData"
+          }
+        },
+        {
+          "arg": "file1",
+          "type": "file",
+          "required": true,
+          "description": "请求文件",
+          "http": {
+            "source": "formData"
+          }
+        },
+        {
+          "arg": "file2",
+          "type": "file",
+          "description": "请求文件2",
+          "http": {
+            "source": "formData"
+          }
+        }
+      ],
+      "http": {
+        "verb": "post",
+        "path": "/:id/uploadFile"
+      },
+      "returns": {
+        "type": "object"
       }
     },
     "updateAll": {

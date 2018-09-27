@@ -1,6 +1,7 @@
 'use strict';
 
 const userJSON = require('./user.json');
+const stream = require('stream');
 
 module.exports = app => {
   const { STRING } = app.Sequelize;
@@ -50,6 +51,28 @@ module.exports = app => {
   User.updateAll = async function(ctx, data, where = {}) {
     const [ affectedCount ] = await User.update(data, { where });
     return { affected: affectedCount };
+  };
+
+
+  User.prototype.uploadFile = async function(ctx, data, file1, file2) {
+    let file1IsinstanceOfFileStream = false;
+    if (file1 && file1.filename) {
+      file1IsinstanceOfFileStream = file1 instanceof stream.Readable;
+    }
+    let file2IsinstanceOfFileStream = false;
+    if (file2 && file2.filename) {
+      file2IsinstanceOfFileStream = file2 instanceof stream.Readable;
+    }
+    const result = {
+      file1Name: file1 && file1.filename || '',
+      file2Name: file2 && file2.filename || '',
+      file1IsinstanceOfFileStream,
+      file2IsinstanceOfFileStream,
+      data,
+      userId: this.id,
+    };
+
+    return result;
   };
 
   User.remotes = userJSON.remotes;

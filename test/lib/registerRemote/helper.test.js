@@ -4,7 +4,7 @@ const helper = require('../../../lib/registerRemote/helper');
 
 describe('test/lib/registerRemote/helper.js', () => {
   describe('validateCtxInput()', () => {
-    it('catch parameter throw message', () => {
+    it('catch parameter throw message', async () => {
       const mockCtx = {
         params: {
           foo: 'dsa',
@@ -28,14 +28,16 @@ describe('test/lib/registerRemote/helper.js', () => {
         query: {},
       };
 
-      const block = () => {
-        helper.validateCtxInput(mockCtx, rules);
-      };
+      try {
+        await helper.validateCtxInput(mockCtx, rules);
+      } catch (error) {
+        assert(error.status, 400);
+      }
 
-      assert.throws(block, Error);
+      // assert.throws(block, Error);
     });
 
-    it('other Branches throw message', () => {
+    it('other Branches throw message', async () => {
       const mockCtx = {
         params: '',
         request: {
@@ -51,16 +53,16 @@ describe('test/lib/registerRemote/helper.js', () => {
         query: {},
       };
 
-      const block = () => {
-        helper.validateCtxInput(mockCtx, rules);
-      };
-
-      assert.throws(block, Error);
+      try {
+        await helper.validateCtxInput(mockCtx, rules);
+      } catch (error) {
+        assert(error.status, 400);
+      }
     });
   });
 
   describe('parseArgWithAccept()', () => {
-    it('branches 1', () => {
+    it('branches 1', async () => {
       const mockCtx = {
         params: '',
         request: {
@@ -79,12 +81,12 @@ describe('test/lib/registerRemote/helper.js', () => {
         },
       };
 
-      const result = helper.parseArgWithAccept(mockCtx, accept);
+      const result = await helper.parseArgWithAccept(mockCtx, accept);
       assert.equal('demo', result);
 
     });
 
-    it('branches 1 body', () => {
+    it('branches 1 body', async () => {
       const mockCtx = {
         params: '',
         request: {
@@ -103,7 +105,7 @@ describe('test/lib/registerRemote/helper.js', () => {
         },
       };
 
-      const result = helper.parseArgWithAccept(mockCtx, accept);
+      const result = await helper.parseArgWithAccept(mockCtx, accept);
       assert.deepEqual({ bar: 'demo' }, result);
 
     });
