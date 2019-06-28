@@ -25,12 +25,12 @@ module.exports = app => {
   };
 
   User.exists = async function(ctx, id) {
-    const instance = await User.findById(id);
+    const instance = await User.findByPk(id);
     return { exists: !!instance };
   };
 
   User.destroyById = async function(ctx, id) {
-    const instance = await this.findById(id);
+    const instance = await this.findByPk(id);
     if (instance) {
       return instance.destroy();
     }

@@ -1,3 +1,5 @@
+## 20190628
+1. 更新 `Model.findById` => `Model.findBypk`
 ## 20180602
 1. fix: 修复路径加载顺序造成的访问错误
 
