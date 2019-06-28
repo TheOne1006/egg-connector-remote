@@ -49,6 +49,7 @@ const expectedPath = {
     'application/x-www-form-urlencoded',
     'application/xml',
     'text/xml',
+    'multipart/form-data',
   ], // 响应格式
   operationId: 'demo.prototype__test__post__test',
   parameters: [
