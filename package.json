@@ -19,7 +19,8 @@
     "debug": "^4.1.1",
     "egg": "^2.22.2",
     "lodash": "^4.17.11",
-    "parameter": "^3.6.0"
+    "parameter": "^3.6.0",
+    "snyk": "^1.192.0"
   },
   "devDependencies": {
     "autod": "^3.1.0",
@@ -51,7 +52,9 @@
     "lint": "eslint .",
     "ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
     "pkgfiles": "egg-bin pkgfiles",
-    "autod": "autod"
+    "autod": "autod",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "files": [
     "app",
@@ -72,5 +75,6 @@
   },
   "homepage": "https://github.com/TheOne1006/egg-connector-remote/blob/master/README.zh_CN.md",
   "author": "theone.io",
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
