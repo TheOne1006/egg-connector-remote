@@ -1,4 +1,7 @@
 
+## 20191101
+1. 更新版本
+
 ## 20190628
 1. 更新 `Model.findById` => `Model.findBypk`
 
